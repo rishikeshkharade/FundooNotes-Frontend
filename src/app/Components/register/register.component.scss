@@ -1,86 +1,98 @@
-:host {
+.container {
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  background-color: var(--bg-color, #f1f3f4);
-  overflow: hidden;
+  background-color: #f0f2f5;
 }
 
-.container {
+.card-container {
   display: flex;
-  flex-direction: row;
-  background-color: white;
-  max-width: 850px;
-  width: 100%;
+  background: white;
   border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-  padding: 32px;
-  gap: 24px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  width: 900px;
+  padding: 1.5rem;  // Smaller padding
+  gap: 1.5rem;
+  align-items: flex-start;
 }
 
 .left-panel {
-  flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  gap: 12px;
+  flex: start;
+  flex: 1.1;
+  padding: 8px; // Smaller padding
+  padding-right: 0.5rem;
+  justify-content: flex-start;
+  height: 100%;
+  text-align: start;
+  margin-top: 180px;
 
-  .logo {
-    width: 80px;
-    height: 80px;
-    margin-bottom: 16px;
-    margin-left: -18px;
-    margin-right: 10px;
+
+  .logo img {
+    width: 70px; // Smaller logo
+    height: 70px;
+    margin-left: -15px;
+    margin-bottom: 1px; // Smaller margin
   }
 
   h1 {
-    font-size: 24px;
-    font-weight: 500;
-    margin: 0;
+    font-size: 26px; // Smaller heading
+    font-weight: 700;
+    margin: 6px 0 25px; // Smaller margin
   }
 
   p {
-    font-size: 14px;
-    color: #5f6368;
+    font-size: 16px; // Smaller subtext
+    color: #3d3d3d;
+    margin: 0; // Smaller margin
+    
   }
 }
 
+
 .right-panel {
-  flex: 1;
+  flex: 1.4;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 0.7rem;
 }
 
 .name-group {
   display: flex;
-  gap: 16px;
+  gap: 0.7rem;
 
-  mat-form-field {
+  .form-field {
     flex: 1;
   }
 }
 
 mat-form-field {
+  font-size: 0.85rem !important; // Smaller form text
+  ::ng-deep .mat-input-element {
+    font-size: 0.85rem !important; // Input text
+    height: 1.5rem;
+    padding: 0.4rem 0.6rem;
+  }
+  ::ng-deep .mat-form-field-wrapper {
+    padding-bottom: 0.3rem;
+  }
+}
+
+.full-width {
   width: 100%;
 }
 
 button {
-  align-self: flex-start;
-  padding: 8px 24px;
-  font-size: 14px;
+  align-self: flex-end;
+  font-size: 0.85rem;
+  padding: 0.4rem 1.2rem;
+  margin-top: 0.5rem;
 }
 
-@media (max-width: 768px) {
-  .container {
-    flex-direction: column;
-    align-items: center;
-    max-width: 90%;
-    padding: 24px;
-  }
 
-  .name-group {
-    flex-direction: column;
+.card-container,
+.left-panel, .right-panel {
+user-select: none; // Prevents text selection on drag
   }
-}
