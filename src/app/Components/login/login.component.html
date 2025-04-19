@@ -1,0 +1,37 @@
+<div class="container">
+    <div class="card-container">
+      <div class="left-panel">
+        <div class="logo">
+          <img src="assets/images/logo.svg" alt="Logo">
+        </div>
+        <h1>Sign in</h1>
+        <p>Use your Google Account</p>
+      </div>
+  
+      <div class="right-panel" [formGroup]="loginForm">
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email">
+          <mat-error *ngIf="loginForm.get('email')?.invalid && (loginForm.get('email')?.touched || submitted)">
+            Valid email is required
+          </mat-error>
+        </mat-form-field>
+  
+        <mat-form-field appearance="outline">
+          <mat-label>Password</mat-label>
+          <input matInput type="password" formControlName="password">
+          <mat-error *ngIf="loginForm.get('password')?.invalid && (loginForm.get('password')?.touched || submitted)">
+            <mat-icon class="error-icon">error</mat-icon>
+            Password is required
+          </mat-error>
+        </mat-form-field>
+  
+        <a class="forgot-password"
+        [class.error-shown]="loginForm.get('password')?.invalid && (loginForm.get('password')?.touched || submitted)"
+        href="#">Forgot password?</a>
+        <div class="action-row">
+          <a class="create-account" routerLink="/register">Create an account</a>
+          <button mat-raised-button color="primary" (click)="onSubmit()">Sign In</button>
+        </div>
+      </div>
+  </div>

@@ -1,0 +1,137 @@
+.container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f2f5;
+  }
+  
+  .card-container {
+    margin-top: -50px;
+    display: flex;
+    background: white;
+    border-radius: 30px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    width: 1080px;
+    height: 370px;
+    padding: 1.5rem;
+    gap: 1.5rem;
+    align-items: flex-start;
+  }
+  
+  .left-panel {
+    display: flex;
+    flex-direction: column;
+    flex: 1.1;
+    padding: 8px;
+    padding-right: 0.5rem;
+    justify-content: flex-start;
+    height: 100%;
+    text-align: start;
+    margin-top: -10px;
+  
+    .logo img {
+      width: 70px;
+      height: 70px;
+      margin-left: -15px;
+      margin-bottom: 0;
+    }
+  
+    h1 {
+      font-size: 28px;
+      font-weight: bold;
+      margin: 6px 0 6px;
+      margin-top: 0;
+      margin-bottom: 17px;
+    }
+  
+    p {
+      font-size: 17px;
+      color: #3d3d3d;
+      margin-bottom: 0;
+    }
+  }
+  
+  .right-panel {
+    flex: 1.4;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    margin-top: 70px;
+    margin-right: 15px;
+  }
+  
+  mat-form-field {
+    font-size: 0.85rem !important;
+    ::ng-deep .mat-input-element {
+      font-size: 0.85rem !important;
+      height: 1.5rem;
+      padding: 0.4rem 0.6rem;
+    }
+    ::ng-deep .mat-form-field-wrapper {
+      padding-bottom: 0.3rem;
+    }
+  }
+  
+  .forgot-password {
+    font-size: 0.85rem;
+    color: #1a73e8;
+    margin-top: -1.5rem;
+    text-decoration: none;
+    margin-bottom: 0.5rem;
+    align-self: flex-start;
+    transition: margin-top 0.2s ease;
+    margin-left: 3px;
+
+    &.error-shown {
+      margin-top: 0;
+    }
+
+    &:not(.error-shown) {
+      margin-top: -1.5rem;
+    }
+  }
+
+  mat-error{
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-left: -19px;
+    margin-top: 3px;
+    color: #e15a5a;
+
+    .error-icon {
+      font-size: 18px;
+      vertical-align: middle;
+  }
+}
+
+button {
+    align-self: flex-end;
+    font-size: 0.85rem;
+    padding: 0.4rem 1.2rem;
+    margin-top: 0;
+  }
+
+  .action-row {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 2rem; // space between link and button
+    margin-top: 2rem;
+  
+    .create-account {
+      font-size: 0.90rem;
+      text-decoration: none;
+      color: #1a73e8;
+      font-weight: 500;
+      cursor: pointer;
+      transition: text-decoration 0.2s;
+    }
+  }
+  
+  
+  .card-container, .left-panel, .right-panel {
+    user-select: none;
+  }
+  
