@@ -1,0 +1,22 @@
+<button 
+  class="icon-button" 
+  [matTooltip]="tooltip"
+  (click)="handleClick($event)">
+  
+  <span class="material-symbols-outlined">{{ icon }}</span>
+
+  <!-- Dropdown Menu -->
+  <div class="menu-container" *ngIf="showMenu">
+    <div class="menu-options">
+      <div 
+        class="menu-item" 
+        *ngFor="let option of menuOptions"
+        (click)="handleMenuAction(option.action, $event)">
+        
+        <span class="material-symbols-outlined">{{ option.icon }}</span>
+        <span>{{ option.label }}</span>
+      </div>
+    </div>
+  </div>
+  
+</button>

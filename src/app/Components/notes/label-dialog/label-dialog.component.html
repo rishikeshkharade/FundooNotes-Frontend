@@ -1,0 +1,12 @@
+<h2 mat-dialog-title>Choose Labels</h2>
+
+<div class="dialog-content">
+  <div *ngFor="let label of labels" class="label-option">
+    <mat-checkbox (change)="toggleLabel(label.labelId)">{{ label.labelName }}</mat-checkbox>
+  </div>
+</div>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="cancel()">Cancel</button>
+  <button mat-button color="primary" (click)="saveLabels()">Save</button>
+</mat-dialog-actions>

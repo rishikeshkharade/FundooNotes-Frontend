@@ -1,0 +1,40 @@
+<div class="create-note-card" [class.expanded]="isExpanded">
+  <div class="create-note-input" (click)="expandNote()" *ngIf="!isExpanded">
+    <div class="placeholder">Take a note...</div>
+    <div class="action-icons">
+      <button matTooltip="New list"><mat-icon>check_box</mat-icon></button>
+      <button matTooltip="New note with drawing"><mat-icon>brush</mat-icon></button>
+      <button matTooltip="New note with image"><mat-icon>image</mat-icon></button>
+    </div>
+  </div>
+
+  <div class="expanded-note" *ngIf="isExpanded">
+    <input
+      type="text"
+      class="note-title"
+      placeholder="Title"
+      [(ngModel)]="title"
+      autofocus
+    />
+
+    <textarea
+      class="note-content"
+      placeholder="Take a note..."
+      [(ngModel)]="description"
+    ></textarea>
+
+    <div class="note-footer">
+      <div class="action-icons">
+        <app-icon icon="notification_add" tooltip="Remind me"></app-icon>
+        <app-icon icon="person_add" tooltip="Collaborator"></app-icon>
+        <app-icon icon="palette" tooltip="Background options"></app-icon>
+        <app-icon icon="image" tooltip="Add image"></app-icon>
+        <app-icon icon="archive" tooltip="Archive" (iconClick)="archiveNote()"></app-icon>
+        <app-icon icon="more_vert" tooltip="More"></app-icon>
+        <app-icon icon="undo" tooltip="Undo"></app-icon>
+        <app-icon icon="redo" tooltip="Redo"></app-icon>
+      </div>
+      <button class="close-btn" (click)="closeNote()">Close</button>
+    </div>
+  </div>
+</div>

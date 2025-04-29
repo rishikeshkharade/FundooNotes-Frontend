@@ -1,0 +1,25 @@
+<div class="update-note-card" [style.background-color]="colour">
+    <input type="text" class="note-title" placeholder="Title" [(ngModel)]="title" autofocus />
+    
+    <textarea class="note-content" placeholder="Take a note..." [(ngModel)]="description"></textarea>
+  
+    <div class="note-footer">
+      <div class="action-icons">
+        <app-icon icon="notification_add" tooltip="Remind me" (iconClick)="openReminderDialog()"></app-icon>
+        <app-icon icon="palette" tooltip="Change Color" (iconClick)="toggleColorPalette()"></app-icon>
+        <app-icon icon="archive" tooltip="Archive"></app-icon>
+        <app-icon icon="delete" tooltip="Trash"></app-icon>
+      </div>
+      <button mat-button class="close-btn" (click)="closeDialog()">Close</button>
+    </div>
+  
+    <!-- Color Palette -->
+    <div class="color-palette" *ngIf="showColorPalette">
+      <div class="color-option" 
+           *ngFor="let color of colors"
+           [style.background-color]="color"
+           (click)="changeColor(color)">
+      </div>
+    </div>
+  </div>
+  

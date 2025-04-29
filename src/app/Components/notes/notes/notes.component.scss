@@ -1,0 +1,36 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 24px 16px;
+    background-color: #f1f3f4;
+    min-height: calc(100vh - 64px); // header height adjustment
+    box-sizing: border-box;
+  }
+  
+  .empty-notes {
+    text-align: center;
+    color: #5f6368;
+    margin-top: 64px;
+  
+    .empty-icon mat-icon {
+      font-size: 64px;
+      color: #dadce0;
+    }
+  
+    .empty-text {
+      margin-top: 16px;
+      font-size: 18px;
+    }
+  }
+  
+  .notes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 16px;
+    width: 100%;
+    max-width: 1200px;
+    padding: 16px 0;
+  }
+  

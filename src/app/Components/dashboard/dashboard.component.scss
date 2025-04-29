@@ -1,0 +1,247 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+
+:host {
+  font-family: 'Roboto', sans-serif;
+  color: #202124;
+}
+
+.keep-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: #fff;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  height: 64px;
+  background-color: #fff;
+  box-shadow: 0 1px 3px rgba(60, 64, 67, 0.302);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+}
+
+.menu-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: rgba(60, 64, 67, 0.08);
+  }
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+
+  .logo-img {
+    height: 43px;
+    margin-left: -8px;
+  }
+
+  .logo-text {
+    font-size: 22px;
+    color: #5f6368;
+    font-weight: 400;
+    margin-left: -8px;
+  }
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  background-color: #e8eaed;
+  border-radius: 8px;
+  padding: 6px 12px;
+  flex: 1;
+  margin: 0 32px;
+  max-width: 720px;
+  width: 100%;
+  position: relative;
+  transition: background-color 0.2s, box-shadow 0.2s;
+
+  mat-icon {
+    color: #5f6368;
+  }
+
+  .search-input {
+    flex: 1;
+    border: none;
+    padding: 8px;
+    background: transparent;
+    outline: none;
+    font-size: 16px;
+    color: #202124;
+    margin-left: 8px;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .close-icon {
+    visibility: hidden;
+    cursor: pointer;
+    color: #5f6368;
+    transition: visibility 0.2s ease;
+  }
+
+  &:focus-within {
+    background-color: #fff;
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.302);
+
+    .close-icon {
+      visibility: visible;
+    }
+  }
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  margin: 0 4px;
+
+  button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    transition: background-color 0.2s;
+
+    mat-icon {
+      color: #5f6368;
+    }
+
+    &:hover {
+      background-color: rgba(60, 64, 67, 0.08);
+    }
+  }
+
+  .user-avatar mat-icon {
+    font-size: 36px;
+    color: #5f6368;
+  }
+}
+
+.main-content {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+.sidebar {
+  width: 260px;
+  background-color: #fff;
+  padding-top: 24px;
+  box-shadow: 1px 0 2px rgba(60, 64, 67, 0.15);
+  transition: width 0.3s;
+
+  &.collapsed {
+    width: 80px; /* Better for collapsed look */
+
+    .sidebar-items .sidebar-item {
+      justify-content: center;
+      padding: 12px 0;
+
+      .icon-wrapper {
+        background-color: transparent;
+        border-radius: 50%;
+        width: 48px;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background-color 0.2s;
+      }
+
+      mat-icon {
+        margin: 0;
+        font-size: 24px;
+        color: #5f6368;
+      }
+
+      span {
+        display: none;
+      }
+
+      &:hover .icon-wrapper {
+        background-color: #feefc3;
+      }
+    }
+  }
+
+  .sidebar-items {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    .sidebar-item {
+      display: flex;
+      align-items: center;
+      padding: 12px;
+      cursor: pointer;
+      border-radius: 0 25px 25px 0;
+      transition: background-color 0.2s;
+
+      mat-icon {
+        margin-right: 16px;
+        color: #5f6368;
+      }
+
+      &:hover,
+      &.active {
+        background-color: #feefc3;
+      }
+    }
+  }
+}
+
+
+.notes-container {
+  flex: 1;
+  padding: 32px 24px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  background-color: #f1f3f4;
+}
+
+.notes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.empty-notes {
+  text-align: center;
+  margin-top: 60px;
+  color: #5f6368;
+
+  .empty-icon mat-icon {
+    font-size: 64px;
+    color: #dadce0;
+  }
+
+  .empty-text {
+    margin-top: 16px;
+    font-size: 18px;
+  }
+}

@@ -1,0 +1,11 @@
+<div *ngIf="archivedNotes.length === 0" class="empty-notes">
+    <div class="empty-icon">
+      <mat-icon>archive</mat-icon>
+    </div>
+    <div class="empty-text">No archived notes found</div>
+  </div>
+  
+  <div *ngIf="archivedNotes.length > 0" class="notes-grid">
+    <app-display-note *ngFor="let note of archivedNotes" [note]="note"></app-display-note>
+  </div>
+  

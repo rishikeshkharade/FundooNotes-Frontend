@@ -1,0 +1,48 @@
+<div class="note-card" [style.background-color]="note.colour" (click)="openUpdateDialog()">
+    <div class="note-check-pin">
+    <mat-icon class="check-icon">check_circle</mat-icon>
+    <mat-icon class="pin-icon">push_pin</mat-icon>
+  </div>
+
+  <div class="note-content">
+    <div class="note-title" *ngIf="note.title">{{ note.title }}</div>
+    <div class="note-description">{{ note.description }}</div>
+    
+    <div class="reminder-chip" *ngIf="note.reminder">
+      <mat-icon class="reminder-icon">notifications_active</mat-icon>
+      {{ note.reminder | date:'MMM d, y, h:mm a' }}
+    </div>
+  </div>
+
+  <div class="note-actions">
+    <ng-container *ngIf="!isTrashView; else trashActions">
+    <app-icon icon="palette" tooltip="Background options"></app-icon>
+    <app-icon 
+  icon="notification_add" 
+  tooltip="Remind me" 
+  (iconClick)="openReminderDialog()">
+</app-icon>
+
+    <app-icon [icon]="'person_add'" [tooltip]="'Collaborator'"></app-icon>
+    <app-icon [icon]="'image'" [tooltip]="'Add image'"></app-icon>
+    <app-icon 
+      [icon]="note.isArchive ? 'unarchive' : 'archive'" 
+      [tooltip]="note.isArchive ? 'Unarchive' : 'Archive'" 
+      (iconClick)="archiveNote()">
+    </app-icon>
+    
+    <app-icon 
+    [icon]="'more_vert'"
+    [tooltip]="'More options'"
+    [menuOptions]="[
+      { label: 'Delete', icon: 'delete', action: deleteNote.bind(this) }
+    ]">
+  </app-icon>
+</ng-container>
+
+  <ng-template #trashActions>
+    <app-icon icon="restore_from_trash" tooltip="Restore" (iconClick)="restoreNote()"></app-icon>
+    <app-icon icon="delete_forever" tooltip="Delete forever" (iconClick)="deleteForever()"></app-icon>
+  </ng-template>
+</div>
+</div>

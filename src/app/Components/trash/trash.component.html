@@ -1,0 +1,21 @@
+<div class="trash-container">
+    <div *ngIf="trashedNotes.length === 0" class="empty-trash">
+      <div class="empty-icon">
+        <mat-icon>delete_outline</mat-icon>
+      </div>
+      <div class="empty-text">No notes in Trash</div>
+    </div>
+  
+    <div class="notes-grid" *ngIf="trashedNotes.length > 0">
+      <app-display-note 
+  *ngFor="let note of trashedNotes" 
+  [note]="note" 
+  [isTrashView]="true"
+  (restoreClicked)="onRestore($event)"
+  (deleteForeverClicked)="onDeleteForever($event)">
+</app-display-note>
+
+
+    </div>
+  </div>
+  

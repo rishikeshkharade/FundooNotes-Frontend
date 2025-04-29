@@ -1,0 +1,16 @@
+<app-create-note (createNoteEvent)="addNote($event)"></app-create-note>
+
+<div *ngIf="notes.length === 0" class="empty-notes">
+  <div class="empty-icon">
+    <mat-icon>lightbulb_outline</mat-icon>
+  </div>
+  <div class="empty-text">Notes you add appear here</div>
+</div>
+
+<div class="notes-grid" *ngIf="notes.length > 0">
+  <app-display-note 
+  *ngFor="let note of notes" 
+  [note]="note" 
+  (noteUpdated)="onNoteUpdated($event)">
+</app-display-note>
+</div>
