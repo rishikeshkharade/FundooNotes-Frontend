@@ -1,35 +1,37 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HttpService {
+  constructor(private http: HttpClient) { }
 
-  constructor(private Http : HttpClient) { }
-  baseUrl: string = '';
-  getHeaders() {
-    const headers = new HttpHeaders({
-      Authorization: localStorage.getItem('token') || ""
+  BASE_URL: string = 'https://localhost:44373'; 
+
+  getHeader(): HttpHeaders {
+    const token = localStorage.getItem('authtoken') || '';
+    return new HttpHeaders({
+      Authorization: `Bearer ${token}`
     });
-    return headers;
   }
-  getAPI(endpoint: string, headers: HttpHeaders = new HttpHeaders()){
+  
+  
 
-    return this.Http.get(this.baseUrl + endpoint, { headers });
+  getApi<T>(endpoint: string, headers: HttpHeaders = new HttpHeaders()): Observable<T> {
+    return this.http.get<T>(this.BASE_URL + endpoint, { headers });
   }
-
-  postAPI(endpoint: string, data: any, headers: HttpHeaders = new HttpHeaders()){
-
-    return this.Http.post(this.baseUrl + endpoint, data, { headers });
-  }
-  // For example, if you want to use this method for updating user details
-  // you can pass the endpoint as '/user/update' and the data as the user object
-  putAPI(endpoint: string, data: any, headers: HttpHeaders = new HttpHeaders()){
-    return this.Http.put(this.baseUrl + endpoint, data, { headers });
+  
+  postApi<T>(endpoint: string, payload: any, headers: HttpHeaders = new HttpHeaders()): Observable<T> {
+    return this.http.post<T>(this.BASE_URL + endpoint, payload, { headers });
   }
 
-  deleteAPI(endpoint: string, headers: HttpHeaders = new HttpHeaders()){
-    return this.Http.delete(this.baseUrl + endpoint, { headers });
+  putApi<T>(endpoint: string, payload: any, headers: HttpHeaders = new HttpHeaders()): Observable<T> {
+    return this.http.put<T>(this.BASE_URL + endpoint, payload, { headers });
+  }
+
+  deleteApi<T>(endpoint: string, headers: HttpHeaders = new HttpHeaders()): Observable<T> {
+    return this.http.delete<T>(this.BASE_URL + endpoint, { headers });
   }
 }

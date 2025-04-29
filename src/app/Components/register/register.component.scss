@@ -1,9 +1,15 @@
 .container {
-  height: 100vh;
+  min-height: 100dvh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: #f0f2f5;
+  padding: 1rem 0;
+  overflow-y: auto;
+  box-sizing: border-box;
+  height: auto;
+
 }
 
 .card-container {
@@ -12,17 +18,19 @@
   border-radius: 30px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   width: 900px;
-  padding: 1.5rem;  // Smaller padding
+  padding: 1.5rem;  
   gap: 1.5rem;
   align-items: flex-start;
+  flex-wrap: wrap;
+  padding-bottom: 2.5rem;
 }
 
 .left-panel {
   display: flex;
   flex-direction: column;
-  flex: start;
+  align-items: flex-start;
   flex: 1.1;
-  padding: 8px; // Smaller padding
+  padding: 8px; 
   padding-right: 0.5rem;
   justify-content: flex-start;
   height: 100%;
@@ -31,22 +39,22 @@
 
 
   .logo img {
-    width: 70px; // Smaller logo
+    width: 70px; 
     height: 70px;
     margin-left: -15px;
-    margin-bottom: 1px; // Smaller margin
+    margin-bottom: 1px; 
   }
 
   h1 {
-    font-size: 26px; // Smaller heading
+    font-size: 26px;
     font-weight: 700;
-    margin: 6px 0 25px; // Smaller margin
+    margin: 6px 0 25px; 
   }
 
   p {
-    font-size: 16px; // Smaller subtext
+    font-size: 16px; // subtext
     color: #3d3d3d;
-    margin: 0; // Smaller margin
+    margin: 0; 
     
   }
 }
@@ -57,6 +65,7 @@
   display: flex;
   flex-direction: column;
   gap: 0.7rem;
+  flex-grow: 1;
 }
 
 .name-group {
@@ -68,8 +77,30 @@
   }
 }
 
+.visually-hidden {
+  position: absolute;
+  left: -9999px;
+}
+
+.light-icon{
+  color: rgba(0, 0, 0, 0.5);
+}
+
+
+.snackbar-success {
+  background-color: #4caf50 !important;
+  color: #fff !important;
+  font-weight: 500;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+
+
+
 mat-form-field {
-  font-size: 0.85rem !important; // Smaller form text
+  font-size: 0.85rem !important; // form text
   ::ng-deep .mat-input-element {
     font-size: 0.85rem !important; // Input text
     height: 1.5rem;
@@ -87,13 +118,13 @@ mat-form-field {
 .action-row {
   display: flex;
   justify-content: flex-end;
-  gap: 2rem;
+  gap: 3rem;
   align-items: center;
-  margin-top: 1rem; // Smaller margin
+  margin-top: 1rem; 
 
   .signin-link {
-    margin-top: 0.50rem; // Smaller margin
-    font-size: 0.90rem; // Smaller link text
+    margin-top: 0.50rem; 
+    font-size: 0.95rem; // link text
     color: #007bff;
     text-decoration: none;
     font-weight: 500;
@@ -113,4 +144,134 @@ button {
 .card-container,
 .left-panel, .right-panel {
 user-select: none; // Prevents text selection on drag
+  }
+
+
+  
+  @media (max-width: 767px) {
+    .card-container {
+      flex-direction: column;
+      width: 95%;
+      padding: 1rem;
+    }
+  
+    .left-panel {
+      width: 100%;
+      margin-top: 0;
+      align-items: center;
+      text-align: center;
+  
+      .logo img {
+        margin-left: 0;
+      }
+  
+      h1 {
+        font-size: 22px;
+        margin-bottom: 10px;
+      }
+  
+      p {
+        font-size: 14px;
+      }
+    }
+  
+    .right-panel {
+      width: 100%;
+      padding-top: 1rem;
+    }
+  
+    .name-group {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+  
+    .action-row {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+  
+    button {
+      align-self: stretch;
+    }
+  }
+  
+  
+  // TABLET RESPONSIVENESS (768px to 1024px)
+  
+  @media (min-width: 768px) and (max-width: 1024px) {
+    .card-container {
+      width: 90%;
+      flex-direction: column;
+      padding: 1.2rem;
+    }
+  
+    .left-panel {
+      margin-top: 50px;
+      align-items: center;
+      text-align: center;
+    }
+  
+    .right-panel {
+      width: 100%;
+    }
+  
+    .name-group {
+      flex-direction: column;
+    }
+  
+    .action-row {
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+  }
+
+
+  @media (max-width: 1024px) {
+    .card-container {
+      flex-direction: column;
+      width: 95%;
+      padding: 1rem;
+      align-items: center;
+    }
+  
+    .left-panel {
+      width: 100%;
+      margin-top: 40px;
+      align-items: center;
+      text-align: center;
+  
+      .logo img {
+        margin-left: 0;
+      }
+  
+      h1 {
+        font-size: 22px;
+        margin-bottom: 10px;
+      }
+  
+      p {
+        font-size: 14px;
+      }
+    }
+  
+    .right-panel {
+      width: 100%;
+      padding-top: 1rem;
+    }
+  
+    .name-group {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+  
+    .action-row {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+  
+    button {
+      align-self: stretch;
+    }
   }

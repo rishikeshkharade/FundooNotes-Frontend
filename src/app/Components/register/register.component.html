@@ -24,10 +24,11 @@
         </mat-form-field>
       </div>
 
-      <mat-form-field appearance="outline" class="full-width">
+      <mat-form-field appearance="outline" class="full-width"> 
+
         <mat-label>Gender</mat-label>
         <mat-select formControlName="gender">
-          <mat-option value="male">Male</mat-option>
+        <mat-option value="male">Male</mat-option>
           <mat-option value="female">Female</mat-option>
           <mat-option value="other">Other</mat-option>
         </mat-select>
@@ -38,10 +39,10 @@
 
       <mat-form-field appearance="outline" class="full-width">
         <mat-label>Date of Birth</mat-label>
-        <input matInput [matDatepicker]="picker" formControlName="dob" />
+        <input matInput [matDatepicker]="picker" formControlName="dateOfBirth" />
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
-        <mat-error *ngIf="registerForm.get('dob')?.invalid && registerForm.get('dob')?.touched">
+        <mat-error *ngIf="registerForm.get('dateOfBirth')?.invalid && registerForm.get('dateOfBirth')?.touched">
           Date of Birth is required
         </mat-error>
       </mat-form-field>
@@ -60,7 +61,19 @@
 
       <mat-form-field appearance="outline" class="full-width">
         <mat-label>Password</mat-label>
-        <input matInput type="password" formControlName="password" />
+        <input matInput [type]="showPassword ? 'text' : 'password' " formControlName="password" />
+
+        <button
+        mat-icon-button
+        matSuffix
+        (click)="togglePasswordVisibility()"
+        [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="showPassword"
+        type="button"
+        class="light-icon">
+      
+      <mat-icon> {{ showPassword? 'visibility_off' : 'visibility' }}</mat-icon>
+     </button>
         <mat-error
           *ngIf="registerForm.get('password')?.invalid && (registerForm.get('password')?.touched || submitted)">
           Password is required

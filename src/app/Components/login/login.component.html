@@ -8,7 +8,8 @@
         <p>Use your Google Account</p>
       </div>
   
-      <div class="right-panel" [formGroup]="loginForm">
+      <form class="right-panel" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        
         <mat-form-field appearance="outline">
           <mat-label>Email</mat-label>
           <input matInput formControlName="email">
@@ -19,7 +20,15 @@
   
         <mat-form-field appearance="outline">
           <mat-label>Password</mat-label>
-          <input matInput type="password" formControlName="password">
+          <input matInput [type]="showPassword ? 'text': 'password'" formControlName="password">
+
+<button mat-icon-button
+          matSuffix
+          type="button"
+          class="light-icon"
+          (click)="togglePasswordVisibility()">
+    <mat-icon>{{ showPassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+  </button>
           <mat-error *ngIf="loginForm.get('password')?.invalid && (loginForm.get('password')?.touched || submitted)">
             <mat-icon class="error-icon">error</mat-icon>
             Password is required
@@ -29,9 +38,11 @@
         <a class="forgot-password"
         [class.error-shown]="loginForm.get('password')?.invalid && (loginForm.get('password')?.touched || submitted)"
         href="#">Forgot password?</a>
-        <div class="action-row">
+
+        <div class="button-container">
           <a class="create-account" routerLink="/register">Create an account</a>
-          <button mat-raised-button color="primary" (click)="onSubmit()">Sign In</button>
+          <button mat-raised-button color="primary" type="submit">Sign In</button>
         </div>
-      </div>
+        
+        </form>
   </div>
