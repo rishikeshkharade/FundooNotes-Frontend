@@ -34,3 +34,8 @@
     padding: 16px 0;
   }
   
+  .notes-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }

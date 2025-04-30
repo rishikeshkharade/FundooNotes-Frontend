@@ -7,10 +7,11 @@
   <div class="empty-text">Notes you add appear here</div>
 </div>
 
-<div class="notes-grid" *ngIf="notes.length > 0">
+<div [ngClass]="{ 'notes-grid': !isListView, 'notes-list': isListView }" *ngIf="notes.length > 0">
   <app-display-note 
-  *ngFor="let note of notes" 
-  [note]="note" 
-  (noteUpdated)="onNoteUpdated($event)">
-</app-display-note>
+    *ngFor="let note of notes" 
+    [note]="note" 
+    (noteUpdated)="onNoteUpdated($event)">
+  </app-display-note>
 </div>
+

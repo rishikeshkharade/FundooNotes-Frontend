@@ -1,0 +1,24 @@
+<h2 mat-dialog-title>Edit Labels</h2>
+
+<div mat-dialog-content>
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Label Name</mat-label>
+    <input matInput [(ngModel)]="newLabel" placeholder="Enter label" />
+  </mat-form-field>
+
+  <button mat-button color="primary" (click)="createLabel()">Create</button>
+
+  <mat-chip-list>
+    <mat-chip
+      *ngFor="let label of labels"
+      [removable]="true"
+      (removed)="deleteLabel(label.labelId)">
+      {{ label.labelName }}
+      <mat-icon matChipRemove>cancel</mat-icon>
+    </mat-chip>
+  </mat-chip-list>
+</div>
+
+<div mat-dialog-actions align="end">
+  <button mat-button (click)="closeDialog()">Close</button>
+</div>

@@ -5,33 +5,55 @@
       <button class="menu-btn" (click)="toggleSidebar()" matTooltip="Main menu">
         <mat-icon>menu</mat-icon>
       </button>
-      <div class="logo">
+
+      <div *ngIf="currentRoute === '/dashboard'" class="logo">
         <img src="assets/images/Keep.png" alt="Keep logo" class="logo-img" />
         <span class="logo-text">Keep</span>
+      </div>
+      
+      <!-- For other pages -->
+      <div *ngIf="currentRoute !== '/dashboard'" class="page-title">
+        <span>{{ getPageTitle(currentRoute) }}</span>
       </div>
     </div>
 
     <div class="search-container"> 
       <mat-icon>search</mat-icon>
-      <input type="text" placeholder="Search" class="search-input" />
-      <mat-icon class="close-icon">close</mat-icon>
+      <input type="text" placeholder="Search" class="search-input"
+      [(ngModel)]="searchQuery" (input)="onSearchChange()" />
+      <mat-icon class="close-icon" (click)="clearSearch()">close</mat-icon>
     </div>
 
     <div class="header-right">
-      <button matTooltip="Refresh"><mat-icon>refresh</mat-icon></button>
-      <button matTooltip="List view"><mat-icon>view_agenda</mat-icon></button>
-      <button matTooltip="Settings"><mat-icon>settings</mat-icon></button>
-      <button matTooltip="Apps"><mat-icon>apps</mat-icon></button>
-      <div class="user-avatar">
-        <mat-icon>account_circle_outlined</mat-icon>
+      <button matTooltip="Refresh" (click)="refreshNotes()">
+        <mat-icon [class.spin]="isRefreshing">refresh</mat-icon>
+      </button>
+      <button matTooltip="List view" (click)="toggleView()">
+        <mat-icon>{{ isListView ? 'grid_view' : 'view_agenda' }}</mat-icon>
+      </button>
+      <button matTooltip="Settings">
+        <mat-icon>settings</mat-icon>
+      </button>
+    
+      <div class="right-cluster">
+        <button matTooltip="Apps">
+          <mat-icon>apps</mat-icon>
+        </button>
+    
+        <button matTooltip="Google Account" class="avatar-button" (click)="toggleAccountMenu()">
+          <img src="assets/images/user.png" alt="User" class="avatar-img" />
+        </button>
+    
+        <div class="account-menu" *ngIf="showAccountMenu">
+          <button (click)="logout()">Logout</button>
+        </div>
       </div>
     </div>
   </div>
 
   <!-- Main Layout -->
   <div class="main-content">
-
-
+    
     <!-- Sidebar -->
     <div class="sidebar" [class.collapsed]="sidebarCollapsed">
       <div class="sidebar-items">
@@ -41,28 +63,28 @@
           </div>
           <span>Notes</span>
         </div>
-    
+
         <div class="sidebar-item" [matTooltip]="sidebarCollapsed ? '' : 'Reminders'">
           <div class="icon-wrapper">
             <mat-icon>notifications_none</mat-icon>
           </div>
           <span>Reminders</span>
         </div>
-    
+
         <div class="sidebar-item" [matTooltip]="sidebarCollapsed ? '' : 'Edit labels'">
           <div class="icon-wrapper">
             <mat-icon>edit</mat-icon>
           </div>
           <span>Edit labels</span>
         </div>
-    
+
         <div class="sidebar-item" [matTooltip]="sidebarCollapsed ? '' : 'Archive'" [routerLink]="['/dashboard/archive']" [class.active]="isActive('/dashboard/archive')">
           <div class="icon-wrapper">
             <mat-icon>archive</mat-icon>
           </div>
           <span>Archive</span>
         </div>
-    
+
         <div class="sidebar-item" [matTooltip]="sidebarCollapsed ? '' : 'Trash'" [routerLink]="['/dashboard/trash']" [class.active]="isActive('/dashboard/trash')">
           <div class="icon-wrapper">
             <mat-icon>delete</mat-icon>
@@ -71,10 +93,9 @@
         </div>
       </div>
     </div>
-    
 
-    <div class="notes-container">
-    <router-outlet></router-outlet>
+    <div class="notes-container" [class.list-view]="isListView">
+      <router-outlet></router-outlet>
     </div>
   </div>
 </div>

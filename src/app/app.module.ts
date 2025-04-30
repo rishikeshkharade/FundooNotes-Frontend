@@ -23,6 +23,7 @@ import { MatChipsModule} from '@angular/material/chips';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatChipListbox } from '@angular/material/chips';
 
 
 // app modules
@@ -39,13 +40,13 @@ import { NotesComponent } from './Components/notes/notes/notes.component';
 import { TrashComponent } from './Components/trash/trash.component';
 import { ConfirmDeleteDialogComponent } from './Components/confirm-delete-dialog/confirm-delete-dialog.component';
 import { RemiderDialogComponent } from './Components/notes/remider-dialog/remider-dialog.component';
-import { LabelDialogComponent } from './Components/notes/label-dialog/label-dialog.component';
 import { UpdateNoteDialogComponent } from './Components/notes/update-note-dialog/update-note-dialog.component';
+import { LabelEditDialogComponent } from './Components/labels/label-edit-dialog/label-edit-dialog.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent, RegisterComponent, LoginComponent, routingComponents, IconComponent, DisplayNoteComponent, DashboardComponent, CreateNoteComponent, ArchiveComponent, NotesComponent, TrashComponent, ConfirmDeleteDialogComponent, RemiderDialogComponent, LabelDialogComponent, UpdateNoteDialogComponent],
+    AppComponent, RegisterComponent, LoginComponent, routingComponents, IconComponent, DisplayNoteComponent, DashboardComponent, CreateNoteComponent, ArchiveComponent, NotesComponent, TrashComponent, ConfirmDeleteDialogComponent, RemiderDialogComponent, UpdateNoteDialogComponent, LabelEditDialogComponent],
   imports: [
     RouterModule,
     BrowserModule,
@@ -53,6 +54,7 @@ import { UpdateNoteDialogComponent } from './Components/notes/update-note-dialog
     BrowserAnimationsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    FormsModule,
     FormsModule,
 
     
