@@ -1,6 +1,6 @@
 <div class="create-note-card" [class.expanded]="isExpanded">
   <div class="create-note-input" (click)="expandNote()" *ngIf="!isExpanded">
-    <div class="placeholder">Take a note...</div>
+    <input class="note-input" placeholder="Take a note..." />
     <div class="action-icons">
       <button matTooltip="New list"><mat-icon>check_box</mat-icon></button>
       <button matTooltip="New note with drawing"><mat-icon>brush</mat-icon></button>
