@@ -28,9 +28,11 @@
       <button matTooltip="Refresh" (click)="refreshNotes()">
         <mat-icon [class.spin]="isRefreshing">refresh</mat-icon>
       </button>
-      <button matTooltip="List view" (click)="toggleView()">
+
+      <button [matTooltip]="isListView ? 'Grid view' : 'List view'" (click)="toggleView()">
         <mat-icon>{{ isListView ? 'grid_view' : 'view_agenda' }}</mat-icon>
       </button>
+
       <button matTooltip="Settings">
         <mat-icon>settings</mat-icon>
       </button>
@@ -55,37 +57,39 @@
   <div class="main-content">
     
     <!-- Sidebar -->
-    <div class="sidebar" [class.collapsed]="sidebarCollapsed">
+    <div class="sidebar" [class.collapsed]="sidebarCollapsed" (mouseenter)="onSidebarHover(true)" (mouseleave)="onSidebarHover(false)">
+
       <div class="sidebar-items">
-        <div class="sidebar-item" [matTooltip]="sidebarCollapsed ? '' : 'Notes'" [routerLink]="['/dashboard']" [class.active]="isActive('/dashboard')">
+
+        <div class="sidebar-item" [routerLink]="['/dashboard']" [class.active]="isActive('/dashboard')">
           <div class="icon-wrapper">
             <mat-icon>lightbulb_outline</mat-icon>
           </div>
           <span>Notes</span>
         </div>
 
-        <div class="sidebar-item" [matTooltip]="sidebarCollapsed ? '' : 'Reminders'">
+        <div class="sidebar-item">
           <div class="icon-wrapper">
             <mat-icon>notifications_none</mat-icon>
           </div>
           <span>Reminders</span>
         </div>
 
-        <div class="sidebar-item" [matTooltip]="sidebarCollapsed ? '' : 'Edit labels'">
+        <div class="sidebar-item">
           <div class="icon-wrapper">
             <mat-icon>edit</mat-icon>
           </div>
           <span>Edit labels</span>
         </div>
 
-        <div class="sidebar-item" [matTooltip]="sidebarCollapsed ? '' : 'Archive'" [routerLink]="['/dashboard/archive']" [class.active]="isActive('/dashboard/archive')">
+        <div class="sidebar-item" [routerLink]="['/dashboard/archive']" [class.active]="isActive('/dashboard/archive')">
           <div class="icon-wrapper">
             <mat-icon>archive</mat-icon>
           </div>
           <span>Archive</span>
         </div>
 
-        <div class="sidebar-item" [matTooltip]="sidebarCollapsed ? '' : 'Trash'" [routerLink]="['/dashboard/trash']" [class.active]="isActive('/dashboard/trash')">
+        <div class="sidebar-item" [routerLink]="['/dashboard/trash']" [class.active]="isActive('/dashboard/trash')">
           <div class="icon-wrapper">
             <mat-icon>delete</mat-icon>
           </div>

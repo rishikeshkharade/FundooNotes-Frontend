@@ -51,6 +51,20 @@ export class DashboardComponent {
       this.sidebarCollapsed = !this.sidebarCollapsed;
     }
   }
+
+  onSidebarHover(hovered: boolean) {
+    if (this.sidebarCollapsed) {
+      const sidebar = document.querySelector('.sidebar');
+      if (sidebar) {
+        if (hovered) {
+          sidebar.classList.add('hover-expand');
+        } else {
+          sidebar.classList.remove('hover-expand');
+        }
+      }
+    }
+  }
+  
   
 
   isActive(path: string): boolean {

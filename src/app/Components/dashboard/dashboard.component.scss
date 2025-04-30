@@ -210,6 +210,7 @@
   display: flex;
   flex: 1;
   overflow: hidden;
+  width: auto;
 }
 
 .sidebar {
@@ -220,22 +221,30 @@
   transition: width 0.3s;
 
   &.collapsed {
-    width: 80px;
+    width: 75px;
 
     .sidebar-items .sidebar-item {
       justify-content: center;
-      padding: 8px 0;
-      height: 64px;
+      padding: 0;
+      height: 48px;
+      margin-left: 12px;
+      margin-right: 12px;
+      border-radius: 50%;
 
       .icon-wrapper {
-        background-color: transparent;
-        border-radius: 50%;
         width: 48px;
         height: 48px;
+        border-radius: 50%;
+        background-color: transparent;
         display: flex;
         align-items: center;
         justify-content: center;
-        transition: background-color 0.2s;
+        transition: background-color 0.2s ease;
+      }
+
+      // Yellow circle if active
+      &.active .icon-wrapper {
+        background-color: #feefc3;
       }
 
       mat-icon {
@@ -247,13 +256,10 @@
       span {
         display: none;
       }
-
-      &:hover .icon-wrapper {
-        background-color: #feefc3;
-      }
     }
   }
 
+  // ========== Expanded Sidebar ========== //
   .sidebar-items {
     display: flex;
     flex-direction: column;
@@ -273,7 +279,10 @@
         font-size: 24px;
       }
 
-      &:hover,
+      &:hover {
+        background-color: #e9eef1;
+      }
+
       &.active {
         background-color: #feefc3;
       }
@@ -281,15 +290,39 @@
   }
 }
 
+.sidebar.hover-expand {
+  width: 260px !important;
+
+  .sidebar-items .sidebar-item {
+    justify-content: flex-start;
+    padding: 12px;
+    border-radius: 0 25px 25px 0;
+    margin-bottom: 0;
+    padding: 0;
+
+    .icon-wrapper {
+      border-radius: 0 25px 25px 0;
+      background-color: transparent;
+    }
+
+    span {
+      display: inline;
+      margin-left: 16px;
+    }
+  }
+}
+
+
+
 .notes-container {
   flex: 1;
   padding: 32px 24px;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch;
   gap: 24px;
-  background-color: #f1f3f4;
+  background-color: #fff;
 }
 
 .notes-grid {
