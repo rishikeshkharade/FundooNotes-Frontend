@@ -22,8 +22,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatChipsModule} from '@angular/material/chips';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatDialogModule } from '@angular/material/dialog';
-import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MatChipListbox } from '@angular/material/chips';
+
 
 
 // app modules
@@ -46,7 +45,7 @@ import { UpdateNoteDialogComponent } from './Components/notes/update-note-dialog
 
 @NgModule({
   declarations: [
-    AppComponent, RegisterComponent, LoginComponent, routingComponents, IconComponent, DisplayNoteComponent, DashboardComponent, CreateNoteComponent, ArchiveComponent, NotesComponent, TrashComponent, ConfirmDeleteDialogComponent, RemiderDialogComponent, UpdateNoteDialogComponent, LabelEditDialogComponent],
+    AppComponent, RegisterComponent, LoginComponent, routingComponents, IconComponent, DisplayNoteComponent, DashboardComponent, CreateNoteComponent, ArchiveComponent, NotesComponent, TrashComponent, ConfirmDeleteDialogComponent, RemiderDialogComponent, UpdateNoteDialogComponent],
   imports: [
     RouterModule,
     BrowserModule,
@@ -54,7 +53,6 @@ import { UpdateNoteDialogComponent } from './Components/notes/update-note-dialog
     BrowserAnimationsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    FormsModule,
     FormsModule,
 
     
@@ -72,10 +70,9 @@ import { UpdateNoteDialogComponent } from './Components/notes/update-note-dialog
     MatToolbarModule,
     MatSidenavModule,
     MatListModule,
-    MatChipsModule,
     MatTooltipModule,
     MatDialogModule,
-    MatCheckboxModule
+    MatChipsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
