@@ -39,13 +39,12 @@ import { NotesComponent } from './Components/notes/notes/notes.component';
 import { TrashComponent } from './Components/trash/trash.component';
 import { ConfirmDeleteDialogComponent } from './Components/confirm-delete-dialog/confirm-delete-dialog.component';
 import { RemiderDialogComponent } from './Components/notes/remider-dialog/remider-dialog.component';
-import { LabelDialogComponent } from './Components/notes/label-dialog/label-dialog.component';
 import { UpdateNoteDialogComponent } from './Components/notes/update-note-dialog/update-note-dialog.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent, RegisterComponent, LoginComponent, routingComponents, IconComponent, DisplayNoteComponent, DashboardComponent, CreateNoteComponent, ArchiveComponent, NotesComponent, TrashComponent, ConfirmDeleteDialogComponent, RemiderDialogComponent, LabelDialogComponent, UpdateNoteDialogComponent],
+    AppComponent, RegisterComponent, LoginComponent, routingComponents, IconComponent, DisplayNoteComponent, DashboardComponent, CreateNoteComponent, ArchiveComponent, NotesComponent, TrashComponent, ConfirmDeleteDialogComponent, RemiderDialogComponent, UpdateNoteDialogComponent],
   imports: [
     RouterModule,
     BrowserModule,
