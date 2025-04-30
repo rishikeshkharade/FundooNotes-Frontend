@@ -41,7 +41,7 @@ import { TrashComponent } from './Components/trash/trash.component';
 import { ConfirmDeleteDialogComponent } from './Components/confirm-delete-dialog/confirm-delete-dialog.component';
 import { RemiderDialogComponent } from './Components/notes/remider-dialog/remider-dialog.component';
 import { UpdateNoteDialogComponent } from './Components/notes/update-note-dialog/update-note-dialog.component';
-import { LabelEditDialogComponent } from './Components/labels/label-edit-dialog/label-edit-dialog.component';
+
 
 
 @NgModule({
