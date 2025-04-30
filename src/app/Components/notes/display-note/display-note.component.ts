@@ -3,7 +3,6 @@ import { Component, Input, Output, EventEmitter, TemplateRef } from '@angular/co
 import { NoteService } from 'src/app/Services/Note/note.service';
 import { MatDialog } from '@angular/material/dialog';
 import { RemiderDialogComponent } from '../remider-dialog/remider-dialog.component';
-import { Dialog } from '@angular/cdk/dialog';
 import { UpdateNoteDialogComponent } from '../update-note-dialog/update-note-dialog.component';
 
 @Component({
